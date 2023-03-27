@@ -7,9 +7,9 @@
 <body>
     <button type="button" id="btnPrintFirst">PrintText</button>
     <button type="button" id="btnPrintSecond">PrintNumbers</button>
+    <button type="button" id="btnSizeTxt">See text list size</button>
+    <button type="button" id="btnSizeNmbr">See numbers list size</button>
     <button type="button" id="btnClean">CleanPage</button><br>
-    <button type="button" id="btnRemoveHTxt">RemoveHeadText</button>
-    <button type="button" id="btnRemoveHNmbr">REmoveHeadNumbers</button><br>
     <input type="text" id="iptPrepend"></input>
     <button type="button" id="btnPrepend1">AddTextHead</button>
     <button type="button" id="btnPrepend2">AddNumbersHead</button><br>
@@ -17,6 +17,11 @@
     <input type="text" id="iptinsrInd">Index</input>
     <button type="button" id="btninsrText">AddTextIndex</button>
     <button type="button" id="btninsrNumb">AddNumbersIndex</button><br>
+    <button type="button" id="btnRemoveHTxt">RemoveHeadText</button>
+    <button type="button" id="btnRemoveHNmbr">RemoveHeadNumbers</button><br>
+    <input type="text" id="iptRemoveInd">Index</input>
+    <button type="button" id="btnRemoveAtTxt">RemoveTextAtIndex</button>
+    <button type="button" id="btnRemoveAtNmbr">RemoveNumbersAtIndex</button><br>
     <h1 id="responses"></h1>
     <script src="cours22.js"></script>
 </body>
@@ -31,6 +36,10 @@
     document.getElementById("btninsrNumb").addEventListener("click", insertNmbrAt);
     document.getElementById("btnRemoveHTxt").addEventListener("click", rmFirstTxt);
     document.getElementById("btnRemoveHNmbr").addEventListener("click", rmFirstNmbr);
+    document.getElementById("btnRemoveAtTxt").addEventListener("click", rmAtTxt);
+    document.getElementById("btnRemoveAtNmbr").addEventListener("click", rmAtNmbr);
+    document.getElementById("btnSizeTxt").addEventListener("click", szTxt);
+    document.getElementById("btnSizeNmbr").addEventListener("click", szNmbr);
 
     function printTxt() {
         let space = "<br>";
@@ -40,6 +49,30 @@
             current = current.next;
             document.getElementById("responses").innerHTML += current.value+space;
         }
+    }
+
+    function szTxt() {
+        let temp = size(myLinkedList);
+        let space = "<br>"
+        document.getElementById("responses").innerHTML += temp+space;
+    }
+
+    function szNmbr() {
+        let temp = size(mySecondLinkedList);
+        let space = "<br>";
+        document.getElementById("responses").innerHTML += temp+space;
+    }
+
+    function rmAtTxt() {
+        let temp = document.getElementById("iptRemoveInd").value;
+        removeAt(temp, myLinkedList);
+        document.getElementById("iptRemoveInd").value = "";
+    }
+
+    function rmAtNmbr() {
+        let temp = document.getElementById("iptRemoveInd").value;
+        removeAt(temp, mySecondLinkedList);
+        document.getElementById("iptRemoveInd").value = "";
     }
 
     function rmFirstTxt() {
