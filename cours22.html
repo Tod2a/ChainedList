@@ -8,6 +8,8 @@
     <button type="button" id="btnPrintFirst">PrintText</button>
     <button type="button" id="btnPrintSecond">PrintNumbers</button>
     <button type="button" id="btnClean">CleanPage</button><br>
+    <button type="button" id="btnRemoveHTxt">RemoveHeadText</button>
+    <button type="button" id="btnRemoveHNmbr">REmoveHeadNumbers</button><br>
     <input type="text" id="iptPrepend"></input>
     <button type="button" id="btnPrepend1">AddTextHead</button>
     <button type="button" id="btnPrepend2">AddNumbersHead</button><br>
@@ -27,6 +29,8 @@
     document.getElementById("btnPrepend2").addEventListener("click", prepend2);
     document.getElementById("btninsrText").addEventListener("click", insertTxtAt);
     document.getElementById("btninsrNumb").addEventListener("click", insertNmbrAt);
+    document.getElementById("btnRemoveHTxt").addEventListener("click", rmFirstTxt);
+    document.getElementById("btnRemoveHNmbr").addEventListener("click", rmFirstNmbr);
 
     function printTxt() {
         let space = "<br>";
@@ -36,6 +40,14 @@
             current = current.next;
             document.getElementById("responses").innerHTML += current.value+space;
         }
+    }
+
+    function rmFirstTxt() {
+        removeFirst(myLinkedList);
+    }
+
+    function rmFirstNmbr() {
+        removeFirst(mySecondLinkedList);
     }
 
     function insertTxtAt() {
