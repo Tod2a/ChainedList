@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ChainedList</title>
+</head>
+
+<body>
+    <button type="button" id="btnPrintFirst">PrintText</button>
+    <button type="button" id="btnPrintSecond">PrintNumbers</button>
+    <button type="button" id="btnClean">CleanPage</button><br>
+    <input type="text" id="iptPrepend"></input>
+    <button type="button" id="btnPrepend1">AddTextHead</button>
+    <button type="button" id="btnPrepend2">AddNumbersHead</button><br>
+    <input type="text" id="iptinsrtAt">Valor</input>
+    <input type="text" id="iptinsrInd">Index</input>
+    <button type="button" id="btninsrText">AddTextIndex</button>
+    <button type="button" id="btninsrNumb">AddNumbersIndex</button><br>
+    <h1 id="responses"></h1>
+    <script src="cours22.js"></script>
+</body>
+
+<script>
+    document.getElementById("btnPrintFirst").addEventListener("click", printTxt);
+    document.getElementById("btnPrintSecond").addEventListener("click", printNmb);
+    document.getElementById("btnClean").addEventListener("click", cleanpage);
+    document.getElementById("btnPrepend1").addEventListener("click", prepend1);
+    document.getElementById("btnPrepend2").addEventListener("click", prepend2);
+    document.getElementById("btninsrText").addEventListener("click", insertTxtAt);
+    document.getElementById("btninsrNumb").addEventListener("click", insertNmbrAt);
+
+    function printTxt() {
+        let space = "<br>";
+        document.getElementById("responses").innerHTML += myLinkedList.head.value+space;
+        let current = myLinkedList.head;
+        for (let i = 0; i < size(myLinkedList)-1; i++){
+            current = current.next;
+            document.getElementById("responses").innerHTML += current.value+space;
+        }
+    }
+
+    function insertTxtAt() {
+        let temp = document.getElementById("iptinsrtAt").value;
+        let ind = document.getElementById("iptinsrInd").value;
+        insertAt(ind, {value : temp, next : null}, myLinkedList);
+        document.getElementById("iptinsrtAt").value = "";
+        document.getElementById("iptinsrInd").value = "";
+    }
+
+    
+    function insertNmbrAt() {
+        let temp = document.getElementById("iptinsrtAt").value;
+        let ind = document.getElementById("iptinsrInd").value;
+        insertAt(ind, {value : temp, next : null}, mySecondLinkedList);
+        document.getElementById("iptinsrtAt").value = "";
+        document.getElementById("iptinsrInd").value = "";
+    }
+
+    function printNmb() {
+        let space = "<br>";
+        document.getElementById("responses").innerHTML += mySecondLinkedList.head.value+space;
+        let current = mySecondLinkedList.head
+        for (let i = 0; i < size(mySecondLinkedList)-1; i++){
+            current = current.next
+            document.getElementById("responses").innerHTML += current.value+space;
+        }
+    }
+
+    function cleanpage(){
+        document.getElementById("responses").innerHTML = " ";     
+    }
+
+    function prepend1() {
+        let temp = document.getElementById("iptPrepend").value;
+        prepend({value : temp, next : null}, myLinkedList);
+        document.getElementById("iptPrepend").value = ""
+    }
+
+    function prepend2() {
+        let temp = document.getElementById("iptPrepend").value;
+        prepend({value : temp, next : null}, mySecondLinkedList);
+        document.getElementById("iptPrepend").value = ""
+    }
+</script>
