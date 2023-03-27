@@ -78,9 +78,8 @@ function insertAt(index, node, linkedlist) {
 }
 
 // qui retourne un nouveau noeud
-function createNode() {
-    let content = prompt('quel est le contenu du noeud ?');
-    node = { value: content, next: null };
+function createNode(val) {
+    node = { value: val, next: null };
     return node;
 }
 
@@ -235,5 +234,44 @@ function removeValor (valor, linkedlist) {
 //gotenks (myLinkedList, mySecondLinkedList);
 //removeValor(9, mySecondLinkedList) 
 //bubble(mySecondLinkedList)
+//prepend(createNode("testalors"), myLinkedList);
 //print(myLinkedList)
 //print(mySecondLinkedList)
+
+
+function testPrepend() {
+    prepend(createNode("test"), myLinkedList)
+    let pitete = "test";
+    let result = myLinkedList.head.value;
+    if (pitete === result) {
+        console.log("prepend fonctione!");
+    } else {
+        console.log("prepend ne fonctione pas ...");
+    }
+}
+
+function testInsertAt() {
+    insertAt(2, createNode("test"), myLinkedList);
+    let pitete = "test";
+    let result = myLinkedList.head.next.next.value;
+    if (pitete === result) {
+        console.log("insertAt fonctione!");
+    } else {
+        console.log("insertAt ne fonctione pas ...");
+    }
+}
+
+function testRemoveFirst() {
+    let pitete = myLinkedList.head.next.value
+    removeFirst(myLinkedList);
+    let result = myLinkedList.head.value
+    if (pitete === result) {
+        console.log("removeFirst fonctione!");
+    } else {
+        console.log("removeFirst ne fonctione pas ...");
+    }
+}
+
+testPrepend();
+testInsertAt();
+testRemoveFirst();
