@@ -125,7 +125,7 @@ function read(index, linkedlist) {
             current = current.next
             index--
         }
-        console.log(current.value);
+        return current.value;
     }
 }
 
@@ -272,6 +272,64 @@ function testRemoveFirst() {
     }
 }
 
+function testRemoveAt() {
+    let pitete = myLinkedList.head.next.next.next.value;
+    removeAt(2, myLinkedList);
+    let result = myLinkedList.head.next.next.value;
+    if (pitete === result) {
+        console.log("removeAt fonctione!");
+    } else {
+        console.log("removeAt ne fonctione pas ...");
+    }
+}
+
+function testSize() {
+    let pitete = size(myLinkedList);
+    let result = 5;
+    if (pitete === result) {
+        console.log("size fonctione!");
+    } else {
+        console.log("size ne fonctione pas ...");
+    }
+}
+
+function testRead() {
+    let pitete = myLinkedList.head.next.next.value;
+    let result = read(2, myLinkedList);
+    if (pitete === result) {
+        console.log("read fonctione!");
+    } else {
+        console.log("read ne fonctione pas ...");
+    }
+}
+
+function testAppend() {
+    let pitete = "test";
+    append(createNode("test"), myLinkedList);
+    let result = myLinkedList.head.next.next.next.next.next.value;
+    if (pitete === result) {
+        console.log("append fonctione!");
+    } else {
+        console.log("append ne fonctione pas ...");
+    }
+}
+
+function testRemoveLast() {
+    let pitete = size(myLinkedList)-1;
+    removeLast(myLinkedList);
+    let result = size(myLinkedList);
+    if (pitete === result) {
+        console.log("removeLast fonctione!");
+    } else {
+        console.log("removeLast ne fonctione pas ...");
+    }
+}
+
 testPrepend();
 testInsertAt();
 testRemoveFirst();
+testRemoveAt();
+testSize();
+testRead();
+testAppend();
+testRemoveLast();
