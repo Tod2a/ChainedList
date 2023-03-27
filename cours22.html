@@ -22,6 +22,7 @@
     <input type="text" id="iptRemoveInd">Index</input>
     <button type="button" id="btnRemoveAtTxt">RemoveTextAtIndex</button>
     <button type="button" id="btnRemoveAtNmbr">RemoveNumbersAtIndex</button><br>
+    <button type="button" id="btnFusion">fusion the second in the first list</button><br>
     <h1 id="responses"></h1>
     <script src="cours22.js"></script>
 </body>
@@ -40,6 +41,7 @@
     document.getElementById("btnRemoveAtNmbr").addEventListener("click", rmAtNmbr);
     document.getElementById("btnSizeTxt").addEventListener("click", szTxt);
     document.getElementById("btnSizeNmbr").addEventListener("click", szNmbr);
+    document.getElementById("btnFusion").addEventListener("click", fusion);
 
     function printTxt() {
         let space = "<br>";
@@ -49,6 +51,10 @@
             current = current.next;
             document.getElementById("responses").innerHTML += current.value+space;
         }
+    }
+
+    function fusion() {
+        gotenks(myLinkedList, mySecondLinkedList);
     }
 
     function szTxt() {
